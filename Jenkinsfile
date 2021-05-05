@@ -15,7 +15,7 @@ node {
     
     stage('Build image') {
   
-       app = docker.build("marctorne/restservice")
+       app = docker.build("mtorne/restservice")
     }
 
     stage('Test image') {
@@ -28,6 +28,7 @@ node {
 
     stage('Push image') {
         
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
