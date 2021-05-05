@@ -9,11 +9,9 @@ node {
 
     stage('Build')
     {
-        steps {
-            sh 'echo "Hello World"'
-            sh 'ls'
-        }
+         sh 'ls' 
     }
+    
     
     stage('Build image') {
   
