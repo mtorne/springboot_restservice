@@ -9,7 +9,7 @@ node {
 
     stage('Build')
     {
-         sh 'ls' 
+         sh './mvnw package' 
     }
     
     
