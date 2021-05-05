@@ -7,6 +7,14 @@ node {
         checkout scm
     }
 
+    stage('Build')
+    {
+        steps {
+            sh 'echo "Hello World"'
+            sh 'ls'
+        }
+    }
+    
     stage('Build image') {
   
        app = docker.build("marctorne/restservice")
