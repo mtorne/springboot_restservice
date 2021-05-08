@@ -1,11 +1,18 @@
 node {
     def app
+    environment {
+        PROJECT_ID = 'emerald-trilogy-313008'
+        CLUSTER_NAME = 'cluster-1'
+        LOCATION = 'europe-west6-a'
+        CREDENTIALS_ID = 'emerald-trilogy-313008'
+    }
 
     stage('Clone repository') {
       
 
         checkout scm
     }
+
 
 
     stage('Build')
