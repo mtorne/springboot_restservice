@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: restservice-cb
+  name: rest-service-cb
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: rest-service-app
-      version: 1
+      version: "1.0"
   template:
     metadata:
       name: rest-service-pod
       labels:
         app: rest-service-app
-        version: 1
+        version: "1.0"
     spec:
       containers:
       - name: rest-service-container
@@ -32,7 +32,7 @@ metadata:
 spec:
   selector:
     app: rest-service-app
-    version: 1
+    version: "1.0"
   type: NodePort
   ports:
   - nodePort: 31113
