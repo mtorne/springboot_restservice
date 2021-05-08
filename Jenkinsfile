@@ -45,4 +45,18 @@ node {
             app.push("latest")
         }
     }
+
+    stage('Deploy to GKE') {
+          
+                sh "sed -i 's/restservice:latest/restservice:${env.BUILD_ID}/g' manifest.yaml"
+                sh 'export PATH=$PATH:/usr/local/bin/'
+                step([$class: 'KubernetesEngineBuilder', 
+                projectId: env.PROJECT_ID, 
+                clusterName: env.CLUSTER_NAME, 
+                location: env.LOCATION, 
+                manifestPattern: 'manifest.yaml', 
+                credentialsId: env.CREDENTIALS_ID, 
+                verifyDeployments: false])
+           
+        }
 }
